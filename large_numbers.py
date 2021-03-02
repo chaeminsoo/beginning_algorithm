@@ -1,6 +1,6 @@
 '''
-Q: make largest number using given list of number by adding them 'M' times. You can't add specific index's number 'K' times in a row
-   The size of the arry is 'N' 
+Q: make the largest number using the given list of numbers by adding them 'M' times. You can't add specific index's number 'K' times in a row
+   The size of the array is 'N' 
 
 input condition:
     1st line: N(2<= N <= 1,000) , M(1<= M <= 10,000) , K(1<= K <= 10,000) ; separated by ' '
