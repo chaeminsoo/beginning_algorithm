@@ -1,5 +1,13 @@
 '''
+Tourist 'A' is standing at point (1,1) of n*n size spare. The far upper left point is (1,1) and the far lower right is (n,n) There is a tour plan written with U, D, R, L. Each code means move up, down, right, left for one.
 
+Make a program that gives us a final destination of tourist 'A'. If 'A' moves out of the spare, that part of the plan will be ignored.
+
+input condition:
+	1st line: n (1<=n<=100)
+	2nd line: tour plan (1<= length <=100)
+output condition:
+	final destinaton (m,n)
 '''
 
 import time
