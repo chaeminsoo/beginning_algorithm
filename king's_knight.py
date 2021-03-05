@@ -1,3 +1,13 @@
+'''
+There is a Knight on the 8*8 size chessboard. Make a program that gives us the number of cases of the Knight's available moves.
+(The chessboard's rows are numbered 1 to 8 from the top and columns are characterized a to h from the left.)
+
+input condition:
+	starting position '(column)(row)'
+output condition:
+	the number of cases
+'''
+
 import time
 
 loca = input() #a1
