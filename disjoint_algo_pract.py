@@ -1,7 +1,8 @@
 def find_parent(parent,x):
     if parent[x] != x:
         return find_parent(parent,parent[x])
-    return x
+    #return x
+    return parent[x] # better way
 
 def union_parent(parent, a,b):
     a= find_parent(parent,a)
