@@ -16,14 +16,12 @@ def union_parent(parent,a,b):
 n,m = map(int,input().split())
 # 0~n,  m time
 
-student = [0]*(n+1)
 parent = [0]*(n+1)
 result=[]
 
 for i in range(n+1):
     parent[i] = i
-    student[i] = i
-
+    
 for _ in range(m):
     a,b,c = map(int,input().split())
 
