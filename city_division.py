@@ -1,6 +1,3 @@
-n,m = map(int,input().split())
-# n: number of houses, m: number of roads
-
 def find_parent(parent,  x):
     if parent[x] != x:
         parent[x]= find_parent(parent, parent[x])
@@ -14,14 +11,33 @@ def union_parent(parent,a,b):
     else:
         parent[a]=b
 
+n,m = map(int,input().split())
+# n: number of houses, m: number of roads
+parent = [0]*(n+1) # parent table
 
-INF = int(1e9)
-graph = [[INF]*(n+1) for _ in range(n+1)]
+roads = []
+costs =[]
+result =0
 
-cost_list=[]
+for i in range(1,n+1):
+    parent[i]=i
 
 for _ in range(m):
-    a,b,cost = map(int,input().split())
-    cost_list.append(cost)
-    graph[a][b] = cost
-    graph[b][a] = cost
+    a, b, c = map(int,input().split())
+    roads.append((c,a,b))
+
+roads.sort()
+
+for road in roads:
+    cost, a, b =road
+    # no cyccle
+    if find_parent(parent, a) != find_parent(parent,b):
+        union_parent(parent,a,b)
+        costs.append(cost)
+
+costs.pop()
+
+for i in costs:
+    result += i
+
+print(result)
