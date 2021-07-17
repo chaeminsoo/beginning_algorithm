@@ -1,43 +1,40 @@
 from collections import deque
 import copy
 
+# num of nodes
 n = int(input())
-# number of classes
-
-prereq =  [0]*(n+1)
-# number of entries
-
-curri = [[] for i in range(n+1)]
-
+indegree = [0]*(n+1)
+#info of edges
+graph = [[] for i in range(n+1)]
 time = [0]*(n+1)
 
 for i in range(1,n+1):
     data = list(map(int,input().split()))
-    curri[i] = data
-    prereq[i] = data[1:]
     time[i] = data[0]
 
-ref_result1 = copy.deepcopy(time)
-#ref_result2 = copy.deepcopy(time)
-ref_num=0
-cnt=0
-for i in prereq[1:]:
-    qpre =deque(i)
-    cnt +=1
-    while qpre:
-        ref = qpre.popleft()    
+    for x in data[1:-1]:
+        indegree[i] += 1
+        graph[x].append(i)
 
-        if ref == -1:
-            continue
-        else:
-            ref_num += time[ref]
-            #ref_result1[cnt] += time[ref]
-            #ref_result2[cnt] += ref_result2[ref]
-    ref_result1[cnt] += ref_num
-    ref_num = 0
+def topology_sort():
+    result = copy.deepcopy(time)
+    q = deque()
 
-print(ref_result1)
-#print(ref_result2)
-print(prereq)
-print(time)
-print(qpre)
+    for i in range(1,n+1):
+        if indegree[i] == 0:
+            q.append(i)
+
+    while q:
+        now = q.popleft()
+
+        for i in graph[now]:
+            result[i] = max(result[i], result[now] + time[i])
+            indegree[i] -=1
+
+            if indegree[i] == 0:
+                q.append(i)
+    
+    for i in range(1,n+1):
+        print(result[i])
+
+topology_sort()
